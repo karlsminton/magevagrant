@@ -1,25 +1,35 @@
 sudo su
-
 #stop any menus from interupting provision
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update -y
 apt-get upgrade -y
-
 apt-get install php5 -y
-
 apt-get install mysql-server-5.6 -y
-mkdir /vagrant/public_html
 
-mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-avaiable/000-default.conf.original
-touch /etc/apache2/sites-available/000-default.conf
-FILE="/etc/apache2/sites-available/000-default.conf"
+sudo ln -fs /vagrant/public_html/ /var/www/site
 
-cat <<EOM > $FILE
+
+
+#mkdir /vagrant/public_html
+
+FILE="/etc/apache2/sites-available/default.conf"
+
+cat << EOF | sudo tee -a $FILE
+
+<Directory "/var/www">
+		AllowOverride All
+</Directory>
+
 <VirtualHost *:80>
-	ServerAdmin webmaster@localhost
-	DocumentRoot /vagrant/public_html
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+		DocumentRoot /var/www/site
+		ServerName site.dev
 </VirtualHost>
-EOM
+EOF
+a2ensite default.conf
+
+service apache2 restart
+
+echo "##############################"
+echo "### Add to your host machine"
+echo "##############################"
