@@ -10,4 +10,5 @@ apt-get install php5 -y
 
 apt-get install mysql-server-5.6 -y
 # apache2 already installed
-ln -s /vagrant/public_html /var/www/html
+ln -s /var/www/html /vagrant/public_html
+# mkdir /vagrant/public_html
