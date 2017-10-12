@@ -9,10 +9,6 @@ apt-get install mysql-server-5.6 -y
 
 sudo ln -fs /vagrant/public_html/ /var/www/site
 
-
-
-#mkdir /vagrant/public_html
-
 FILE="/etc/apache2/sites-available/default.conf"
 
 cat << EOF | sudo tee -a $FILE
@@ -27,8 +23,9 @@ cat << EOF | sudo tee -a $FILE
 </VirtualHost>
 EOF
 a2ensite default.conf
-
 service apache2 restart
+mkdir /vagrant/public_html
+mkdir /var/www/site
 
 echo "##############################"
 echo "### Add to your host machine"
