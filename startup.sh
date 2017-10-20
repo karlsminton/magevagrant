@@ -22,6 +22,7 @@ cat << EOF | sudo tee -a $FILE
 		ServerName site.dev
 </VirtualHost>
 EOF
+a2enmod rewrite
 a2ensite default.conf
 service apache2 restart
 mkdir /vagrant/public_html
