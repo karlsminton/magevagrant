@@ -6,7 +6,7 @@ apt-get update -y
 apt-get upgrade -y
 apt-get install php5 -y
 apt-get install mysql-server-5.6 -y
-
+apt-get install php5-gd -y
 sudo ln -fs /vagrant/public_html/ /var/www/site
 
 FILE="/etc/apache2/sites-available/default.conf"
