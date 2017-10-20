@@ -7,6 +7,8 @@ apt-get upgrade -y
 apt-get install php5 -y
 apt-get install mysql-server-5.6 -y
 apt-get install php5-gd -y
+apt-get install php5-curl -y
+apt-get install php5-mcrypt -y
 sudo ln -fs /vagrant/public_html/ /var/www/site
 
 FILE="/etc/apache2/sites-available/default.conf"
@@ -22,6 +24,8 @@ cat << EOF | sudo tee -a $FILE
 		ServerName site.dev
 </VirtualHost>
 EOF
+php5enmod curl
+php5enmod mcrypt
 a2enmod rewrite
 a2ensite default.conf
 service apache2 restart
