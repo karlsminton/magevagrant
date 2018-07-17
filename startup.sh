@@ -7,6 +7,7 @@ apt-get upgrade -y
 apt-get install php5 -y
 apt-get install mysql-server-5.6 -y
 apt-get install php5-gd -y
+apt-get install php5-mysql -y
 apt-get install php5-curl -y
 apt-get install php5-mcrypt -y
 sudo ln -fs /vagrant/public_html/ /var/www/site
