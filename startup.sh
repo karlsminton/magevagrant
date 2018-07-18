@@ -22,7 +22,7 @@ cat << EOF | sudo tee -a $FILE
 
 <VirtualHost *:80>
 		DocumentRoot /var/www/site
-		ServerName site.dev
+		ServerName site.local
 </VirtualHost>
 EOF
 php5enmod curl
